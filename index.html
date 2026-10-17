@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VME Pumps Ltd</title>
+<meta name="description" content="VME Pumps Ltd designs and builds industrial pumps in Manchester and distributes pumps and spare parts from Birmingham, for UK, export and engineered project customers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: engineering drawing sheets. Grid-paper hero with a general-arrangement drawing; products as drawing sheets with a title block. */
+:root{
+  --paper:#F4F6F5; --card:#FFFFFF; --ink:#0F2F3A; --muted:#4B6169; --line:#D3DBDC;
+  --steel:#A9B9BF; --steel-2:#D2DCDF; --orange:#EA580C; --orange-ink:#B44509; --navy:#0F2F3A; --on-navy:#E9F0F2; --grid:rgba(15,47,58,.07);
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0B1D23; --card:#112B34; --ink:#E4EDEF; --muted:#A6B9BF; --line:#24424C;
+  --steel:#5F7A84; --steel-2:#3F5A64; --orange:#F27A35; --orange-ink:#F59A62; --navy:#071419; --on-navy:#E4EDEF; --grid:rgba(228,237,239,.06); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0B1D23; --card:#112B34; --ink:#E4EDEF; --muted:#A6B9BF; --line:#24424C;
+  --steel:#5F7A84; --steel-2:#3F5A64; --orange:#F27A35; --orange-ink:#F59A62; --navy:#071419; --on-navy:#E4EDEF; --grid:rgba(228,237,239,.06); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+img,svg{max-width:100%}
+[hidden]{display:none!important}
+a{color:var(--orange-ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;margin:0 0 .4em;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:clamp(2.4rem,4.4vw,3.7rem)}
+h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+h3{font-size:1.5rem}
+p{margin:0 0 1em}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink);margin:0 0 .8rem}
+.lead{font-size:1.2rem;color:var(--muted);max-width:40rem}
+.code{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em}
+section{padding-block:clamp(3.5rem,7vw,5.5rem)}
+.sec-head{max-width:46rem;margin-bottom:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:700 1.02rem/1.2 var(--body);text-decoration:none;padding:.8rem 1.3rem;border-radius:6px;border:2px solid var(--orange);background:var(--orange);color:#fff;cursor:pointer}
+.btn:hover{background:var(--orange-ink);border-color:var(--orange-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--card);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:1rem;min-height:68px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{font-family:var(--display);font-size:1.6rem;letter-spacing:.04em;line-height:1}
+.brand small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--orange-ink)}
+.nav{display:flex;gap:.1rem;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--ink);text-decoration:none;padding:.5rem .6rem;border-radius:4px;font-weight:600;font-size:.98rem}
+.nav a:hover{background:var(--paper)}
+.nav a.btn{color:#fff;margin-left:.4rem;padding:.55rem 1rem}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:.5rem .85rem;font:600 1rem var(--body);color:var(--ink);cursor:pointer}
+@media (max-width:1020px){
+  .menu-btn{display:block}
+  .nav{display:none;width:100%;flex-direction:column;align-items:stretch;padding-bottom:1rem}
+  .nav.open{display:flex}
+  .nav a{padding:.8rem .4rem;border-bottom:1px solid var(--line);border-radius:0}
+  .nav a.btn{margin:.8rem 0 0;justify-content:center;border-radius:6px}
+}
+/* hero */
+.hero{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid var(--line);padding-block:clamp(2.5rem,6vw,4.5rem)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.hero h1 span{color:var(--orange-ink)}
+.hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:2rem;padding-top:1.2rem;border-top:1px dashed var(--line);font-family:var(--mono);font-size:.8rem;color:var(--muted);letter-spacing:.03em}
+.facts b{color:var(--ink);font-weight:500}
+.ga{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;padding:.6rem}
+.ga svg{display:block;width:100%;height:auto}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+/* svg drawing classes */
+.p{fill:var(--vol,var(--steel));stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.pm{fill:var(--steel);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.p2{fill:var(--steel-2);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.pc{fill:var(--card);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.ink{fill:var(--ink)}
+.acc{fill:var(--orange);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;opacity:.5}
+.lnw{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.gnd{fill:var(--line)}
+.lead-ln{fill:none;stroke:var(--orange);stroke-width:1.4}
+.lead-dot{fill:var(--orange)}
+.lbl{font-family:var(--mono);font-size:13px;fill:var(--ink)}
+.lbl-s{font-family:var(--body);font-size:12px;fill:var(--muted)}
+.svg-sign{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:2px;fill:var(--orange)}
+/* products */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:-0.6rem 0 1.8rem}
+.chip{font:600 .92rem var(--body);padding:.45rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.grid-p{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:560px){.grid-p{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.grid-p{grid-template-columns:repeat(5,minmax(0,1fr))}.sheet h3{font-size:1.3rem}}
+.sheet{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;display:flex;flex-direction:column;min-width:0}
+.sheet .art{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:16px 16px;padding:.8rem .8rem .2rem;border-bottom:1.5px solid var(--ink)}
+.sheet .art svg{display:block;width:100%;height:auto;aspect-ratio:240/150}
+.tb{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid var(--line)}
+.tb>div{padding:.45rem .8rem}
+.tb>div+div{border-left:1px solid var(--line);text-align:right}
+.tb .k{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.tb .v{font-family:var(--mono);font-size:.86rem}
+.sheet .body{padding:.8rem .8rem 1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.sheet h3{font-size:1.45rem;margin:0}
+.sheet p{margin:0;color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.4rem}
+.tag{font-size:.78rem;font-weight:600;padding:.15rem .55rem;border-radius:3px;background:var(--paper);border:1px solid var(--line)}
+.sheet .q{font-weight:700;font-size:.95rem;text-decoration:none;margin-top:.3rem}
+.sheet .q:hover{text-decoration:underline}
+/* spares */
+.alt{background:var(--card);border-block:1px solid var(--line)}
+.spares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+@media (min-width:560px){.spares{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.part{border:1px solid var(--line);border-radius:4px;padding:1rem .8rem;text-align:center;background:var(--paper)}
+.part svg{width:72px;height:72px;display:block;margin:0 auto .5rem}
+.part b{display:block;font-size:1rem}
+.part .code{color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.2rem,3vw,2.5rem)}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.note{border-left:4px solid var(--orange);background:var(--paper);padding:1rem 1.2rem;border-radius:0 4px 4px 0}
+.note p:last-child{margin:0}
+/* industries */
+.inds{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:560px){.inds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){.inds{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ind{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+.ind svg{width:44px;height:44px}
+.ind h3{font-size:1.35rem;margin:.2rem 0 0}
+.ind p{margin:0;color:var(--muted);font-size:.98rem}
+.ind .code{color:var(--orange-ink);margin-top:auto;padding-top:.4rem}
+/* sites */
+.site{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.site .art{background:var(--paper);border-bottom:1.5px solid var(--ink)}
+.site .art svg{display:block;width:100%;height:auto}
+.site .body{padding:1.2rem 1.3rem 1.4rem}
+.site ul{margin:.4rem 0 0;padding-left:1.2rem}
+.site li{margin:.2rem 0}
+.flow{margin-top:2rem;overflow-x:auto}
+.flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:0;min-width:640px}
+.flow li{position:relative;padding:1rem 1rem 1rem 1.1rem;border:1.5px solid var(--ink);background:var(--card);margin-right:22px}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-22px;top:50%;width:22px;height:2px;background:var(--orange)}
+.flow li:last-child{margin-right:0}
+.flow b{display:block;font-family:var(--display);font-size:1.25rem}
+.flow span{font-size:.92rem;color:var(--muted)}
+/* projects / export */
+.dark{background:var(--navy);color:var(--on-navy)}
+.dark .eyebrow{color:#F59A62}
+.dark .lead,.dark p{color:var(--on-navy)}
+.dark .panel{border:1px solid rgba(233,240,242,.25);border-radius:4px;padding:1.4rem}
+.dark .panel h3{color:#fff}
+.dark ul{padding-left:1.2rem;margin:.4rem 0 0}
+.dark li{margin:.3rem 0}
+.markets{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.markets span{font-family:var(--mono);font-size:.8rem;padding:.3rem .6rem;border:1px solid rgba(233,240,242,.35);border-radius:3px}
+/* order steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--ink);padding-top:.8rem}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--mono);font-size:.8rem;color:var(--orange-ink);margin-bottom:.3rem}
+.steps b{display:block;font-family:var(--display);font-size:1.35rem}
+.steps span{font-size:.95rem;color:var(--muted)}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.steps{grid-template-columns:1fr}}
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,3rem)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.cards{display:grid;gap:.8rem;margin-top:1.4rem}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1rem 1.1rem}
+.ccard .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ccard .v{font-size:1.2rem;font-weight:700;word-break:break-word}
+.ccard .v a{color:var(--ink);text-decoration:none}
+.ccard .v a:hover{color:var(--orange-ink);text-decoration:underline}
+form.quote{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;padding:clamp(1.1rem,3vw,1.8rem);display:grid;gap:1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.field label{font-weight:700;font-size:.98rem}
+.field .hint{font-size:.88rem;color:var(--muted);margin:0}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--muted);border-radius:4px;padding:.6rem .7rem;width:100%}
+textarea{min-height:7.5rem;resize:vertical}
+.invalid{border-color:#C0262D}
+.err{color:#C0262D;font-weight:600;font-size:.92rem;margin:0}
+.chk{display:flex;gap:.6rem;align-items:flex-start}
+.chk input{width:1.2rem;height:1.2rem;margin-top:.2rem;flex:none}
+.hp{position:absolute;left:-9999px}
+.status{border-radius:4px;padding:1rem 1.1rem;font-weight:600}
+.status.ok{background:rgba(22,128,60,.12);border:1.5px solid #16803C}
+.status.bad{background:rgba(192,38,45,.1);border:1.5px solid #C0262D}
+/* footer */
+.ftr{background:var(--navy);color:var(--on-navy);padding-block:2.8rem 2rem;font-size:.98rem}
+.ftr .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:1.6rem}
+@media (max-width:860px){.ftr .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.ftr .cols{grid-template-columns:1fr}}
+.ftr h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 .7rem;color:#F59A62;font-weight:500}
+.ftr ul{list-style:none;margin:0;padding:0}
+.ftr li{margin:.3rem 0}
+.ftr a{color:var(--on-navy)}
+.ftr .base{border-top:1px solid rgba(233,240,242,.2);margin-top:2rem;padding-top:1rem;font-size:.88rem;opacity:.85}
+</style>
+</head>
+<body>
+
+<!-- Drawing library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+ <symbol id="logo" viewBox="0 0 260 260"><circle cx="130" cy="130" r="126" fill="#0F2F3A"/><circle cx="130" cy="130" r="117.18" fill="none" stroke="#EA580C" stroke-width="7.56"/><path d="M155.2,130.0 Q207.69,138.17 197.45,204.91 L164.48,224.72 Q180.19,172.12 156.19,145.12 Z" fill="#EA580C"/><path d="M142.6,151.82 Q161.77,201.37 98.85,225.87 L65.21,207.22 Q118.62,194.52 130.0,160.24 Z" fill="#EA580C"/><path d="M117.4,151.82 Q84.08,193.2 31.4,150.96 L30.73,112.5 Q68.43,152.41 103.81,145.12 Z" fill="#EA580C"/><path d="M104.8,130.0 Q52.31,121.83 62.55,55.09 L95.52,35.28 Q79.81,87.88 103.81,114.88 Z" fill="#EA580C"/><path d="M117.4,108.18 Q98.23,58.63 161.15,34.13 L194.79,52.78 Q141.38,65.48 130.0,99.76 Z" fill="#EA580C"/><path d="M142.6,108.18 Q175.92,66.8 228.6,109.04 L229.27,147.5 Q191.57,107.59 156.19,114.88 Z" fill="#EA580C"/><circle cx="130" cy="130" r="27.72" fill="#0F2F3A"/><circle cx="130" cy="130" r="11.34" fill="#0F2F3A"/></symbol>
+
+ <!-- shared: baseplate + motor -->
+ <symbol id="base" viewBox="0 0 240 150"><rect class="ink" x="14" y="118" width="212" height="10" rx="2"/><rect class="ink" x="22" y="128" width="12" height="8"/><rect class="ink" x="206" y="128" width="12" height="8"/></symbol>
+
+ <!-- end-suction centrifugal -->
+ <symbol id="p-cent" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <path class="pm" d="M44 118 L52 100 H78 L86 118 Z"/>
+  <rect class="p" x="54" y="26" width="20" height="24"/><rect class="p" x="47" y="19" width="34" height="8" rx="1"/>
+  <circle class="p" cx="64" cy="80" r="34"/>
+  <path class="ln" d="M64 58 a22 22 0 1 1 -22 22"/>
+  <rect class="p" x="16" y="70" width="16" height="20"/><rect class="p" x="9" y="63" width="8" height="34" rx="1"/>
+  <circle class="ink" cx="64" cy="80" r="7"/>
+  <rect class="pm" x="97" y="68" width="22" height="26"/><path class="pm" d="M100 94 L96 118 H120 L116 94 Z"/>
+  <rect class="acc" x="119" y="65" width="18" height="32" rx="3"/>
+  <rect class="pm" x="137" y="56" width="70" height="50" rx="6"/>
+  <path class="ln" d="M147 60v42M157 60v42M167 60v42M177 60v42M187 60v42M197 60v42"/>
+  <rect class="p2" x="205" y="61" width="13" height="40" rx="4"/>
+  <rect class="p2" x="160" y="45" width="24" height="12" rx="2"/>
+  <rect class="pm" x="146" y="106" width="12" height="12"/><rect class="pm" x="186" y="106" width="12" height="12"/>
+ </symbol>
+
+ <!-- self-priming -->
+ <symbol id="p-spr" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <rect class="p" x="30" y="36" width="68" height="82" rx="12"/>
+  <path class="ln" d="M38 88h52M38 96h52"/>
+  <rect class="p" x="70" y="16" width="20" height="22"/><rect class="p" x="64" y="10" width="32" height="8" rx="1"/>
+  <rect class="p" x="12" y="44" width="20" height="18"/><rect class="p" x="6" y="38" width="8" height="30" rx="1"/>
+  <rect class="p2" x="42" y="26" width="18" height="12" rx="2"/>
+  <circle class="ink" cx="64" cy="70" r="7"/>
+  <rect class="pm" x="98" y="66" width="20" height="26"/><path class="pm" d="M100 92 L97 118 H119 L116 92 Z"/>
+  <rect class="acc" x="118" y="63" width="18" height="32" rx="3"/>
+  <rect class="pm" x="136" y="56" width="66" height="48" rx="6"/>
+  <path class="ln" d="M146 60v40M156 60v40M166 60v40M176 60v40M186 60v40"/>
+  <rect class="p2" x="200" y="60" width="13" height="40" rx="4"/>
+  <rect class="pm" x="146" y="104" width="12" height="14"/><rect class="pm" x="182" y="104" width="12" height="14"/>
+ </symbol>
+
+ <!-- magnetic drive, close coupled -->
+ <symbol id="p-mag" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <path class="pm" d="M52 118 L58 102 H84 L90 118 Z"/>
+  <rect class="p" x="61" y="34" width="18" height="20"/><rect class="p" x="55" y="28" width="30" height="8" rx="1"/>
+  <circle class="p" cx="70" cy="80" r="28"/>
+  <rect class="p" x="26" y="71" width="16" height="18"/><rect class="p" x="19" y="65" width="8" height="30" rx="1"/>
+  <circle class="ink" cx="70" cy="80" r="6"/>
+  <path class="acc" d="M98 62 H120 L134 70 V92 L120 100 H98 Z"/>
+  <path class="ln" d="M104 66v30M110 66v30"/>
+  <rect class="pm" x="134" y="60" width="58" height="42" rx="6"/>
+  <path class="ln" d="M144 64v34M154 64v34M164 64v34M174 64v34"/>
+  <rect class="p2" x="190" y="64" width="12" height="34" rx="4"/>
+  <rect class="pm" x="142" y="102" width="12" height="16"/><rect class="pm" x="172" y="102" width="12" height="16"/>
+ </symbol>
+
+ <!-- multistage -->
+ <symbol id="p-ms" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <rect class="p" x="18" y="44" width="26" height="74" rx="3"/>
+  <rect class="p" x="44" y="54" width="16" height="56"/><rect class="p" x="60" y="54" width="16" height="56"/><rect class="p" x="76" y="54" width="16" height="56"/><rect class="p" x="92" y="54" width="16" height="56"/><rect class="p" x="108" y="54" width="16" height="56"/>
+  <rect class="p" x="124" y="44" width="26" height="74" rx="3"/>
+  <path class="lnw" d="M18 50 H150 M18 112 H150"/>
+  <rect class="p" x="22" y="24" width="18" height="20"/><rect class="p" x="16" y="18" width="30" height="8" rx="1"/>
+  <rect class="p" x="128" y="24" width="18" height="20"/><rect class="p" x="122" y="18" width="30" height="8" rx="1"/>
+  <rect class="acc" x="150" y="66" width="14" height="28" rx="3"/>
+  <rect class="pm" x="164" y="56" width="52" height="48" rx="6"/>
+  <path class="ln" d="M174 60v40M184 60v40M194 60v40M204 60v40"/>
+  <rect class="p2" x="214" y="61" width="10" height="38" rx="3"/>
+  <rect class="pm" x="170" y="104" width="10" height="14"/><rect class="pm" x="200" y="104" width="10" height="14"/>
+ </symbol>
+
+ <!-- twin screw -->
+ <symbol id="p-screw" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <rect class="p" x="16" y="52" width="132" height="56" rx="8"/>
+  <rect class="pc" x="34" y="60" width="96" height="40" rx="3"/>
+  <path class="lnw" d="M34 80 H130"/>
+  <path class="ln" style="opacity:.85" d="M40 61l8 18M50 61l8 18M60 61l8 18M70 61l8 18M80 61l8 18M90 61l8 18M100 61l8 18M110 61l8 18M120 61l8 18M48 81l-8 18M58 81l-8 18M68 81l-8 18M78 81l-8 18M88 81l-8 18M98 81l-8 18M108 81l-8 18M118 81l-8 18M128 81l-8 18"/>
+  <rect class="p" x="36" y="30" width="20" height="22"/><rect class="p" x="30" y="24" width="32" height="8" rx="1"/>
+  <rect class="p" x="108" y="30" width="20" height="22"/><rect class="p" x="102" y="24" width="32" height="8" rx="1"/>
+  <path class="pm" d="M30 108 L26 118 H48 L44 108 Z M120 108 L116 118 H138 L134 108 Z"/>
+  <rect class="p2" x="148" y="58" width="20" height="44" rx="3"/>
+  <rect class="acc" x="168" y="67" width="12" height="26" rx="3"/>
+  <rect class="pm" x="180" y="58" width="40" height="44" rx="6"/>
+  <path class="ln" d="M190 62v36M200 62v36M210 62v36"/>
+  <rect class="pm" x="186" y="102" width="10" height="16"/><rect class="pm" x="206" y="102" width="10" height="16"/>
+ </symbol>
+
+ <!-- submersible -->
+ <symbol id="p-sub" viewBox="0 0 240 150">
+  <path class="ln" d="M20 30 q10 -6 20 0 t20 0 t20 0 M160 30 q10 -6 20 0 t20 0 t20 0"/>
+  <path class="lnw" d="M140 40 C170 40 176 20 200 14"/>
+  <rect class="p" x="110" y="8" width="20" height="18"/><rect class="p" x="103" y="4" width="34" height="7" rx="1"/>
+  <rect class="p" x="96" y="26" width="48" height="34" rx="5"/>
+  <rect class="acc" x="92" y="60" width="56" height="16" rx="2"/>
+  <path class="lnw" d="M102 62v12M110 62v12M118 62v12M126 62v12M134 62v12M142 62v12" style="stroke:var(--card)"/>
+  <rect class="pm" x="96" y="76" width="48" height="56" rx="6"/>
+  <path class="ln" d="M96 88h48M96 100h48M96 112h48"/>
+  <path class="ink" d="M100 132 H140 L134 142 H106 Z"/>
+ </symbol>
+
+ <!-- slurry -->
+ <symbol id="p-slurry" viewBox="0 0 240 150">
+  <use href="#base"/>
+  <path class="pm" d="M40 118 L48 104 H96 L104 118 Z"/>
+  <rect class="p" x="58" y="14" width="26" height="30"/><rect class="p" x="50" y="8" width="42" height="9" rx="1"/>
+  <circle class="p" cx="72" cy="76" r="40"/>
+  <circle cx="72" cy="76" r="31" fill="none" stroke="var(--ink)" stroke-width="5" opacity=".75"/>
+  <g class="ink"><circle cx="72" cy="40" r="3"/><circle cx="98" cy="50" r="3"/><circle cx="108" cy="76" r="3"/><circle cx="98" cy="102" r="3"/><circle cx="72" cy="112" r="3"/><circle cx="46" cy="102" r="3"/><circle cx="36" cy="76" r="3"/><circle cx="46" cy="50" r="3"/></g>
+  <circle class="ink" cx="72" cy="76" r="9"/>
+  <rect class="p" x="12" y="64" width="20" height="24"/><rect class="p" x="6" y="58" width="8" height="36" rx="1"/>
+  <rect class="pm" x="112" y="62" width="28" height="34"/><path class="pm" d="M114 96 L110 118 H142 L138 96 Z"/>
+  <rect class="acc" x="140" y="64" width="16" height="30" rx="3"/>
+  <rect class="pm" x="156" y="56" width="56" height="50" rx="6"/>
+  <path class="ln" d="M166 60v42M176 60v42M186 60v42M196 60v42"/>
+  <rect class="p2" x="210" y="61" width="12" height="40" rx="4"/>
+  <rect class="pm" x="162" y="106" width="12" height="12"/><rect class="pm" x="194" y="106" width="12" height="12"/>
+ </symbol>
+
+ <!-- vertical turbine -->
+ <symbol id="p-vtp" viewBox="0 0 240 150">
+  <rect class="pm" x="94" y="4" width="52" height="38" rx="6"/>
+  <path class="ln" d="M94 14h52M94 23h52M94 32h52"/>
+  <rect class="p2" x="102" y="0" width="36" height="6" rx="2"/>
+  <rect class="p" x="88" y="42" width="64" height="24" rx="3"/>
+  <rect class="p" x="152" y="47" width="30" height="14"/><rect class="p" x="180" y="41" width="8" height="26" rx="1"/>
+  <rect class="gnd" x="10" y="66" width="220" height="7"/>
+  <path class="ln" d="M14 73l6 6M30 73l6 6M46 73l6 6M62 73l6 6M78 73l6 6M156 73l6 6M172 73l6 6M188 73l6 6M204 73l6 6M220 73l6 6"/>
+  <path class="ln" d="M20 98 q10 -6 20 0 t20 0 t20 0 M160 98 q10 -6 20 0 t20 0 t20 0"/>
+  <rect class="pm" x="111" y="73" width="18" height="44"/>
+  <rect class="p" x="100" y="117" width="40" height="22" rx="4"/>
+  <path class="ln" d="M100 124h40M100 131h40"/>
+  <path class="acc" d="M104 139 H136 L142 148 H98 Z"/>
+ </symbol>
+
+ <!-- spare parts -->
+ <symbol id="sp-imp" viewBox="0 0 80 80"><circle class="pm" cx="40" cy="40" r="30"/><g class="acc"><path d="M40 40 Q52 18 66 26 Q54 30 44 42Z"/><path d="M40 40 Q64 44 62 60 Q54 50 40 46Z"/><path d="M40 40 Q38 64 22 62 Q32 54 36 42Z"/><path d="M40 40 Q16 40 14 24 Q26 30 38 36Z"/><path d="M40 40 Q36 16 50 12 Q44 24 42 38Z"/></g><circle class="ink" cx="40" cy="40" r="7"/></symbol>
+ <symbol id="sp-cas" viewBox="0 0 80 80"><path class="pm" d="M40 12 A28 28 0 1 1 13 46 H8 V34 H13 A28 28 0 0 1 32 14 V6 H48 V14"/><circle class="pc" cx="40" cy="42" r="14"/><circle class="ink" cx="40" cy="42" r="4"/></symbol>
+ <symbol id="sp-sha" viewBox="0 0 80 80"><rect class="pm" x="6" y="34" width="20" height="12" rx="2"/><rect class="pm" x="26" y="31" width="30" height="18" rx="2"/><rect class="pm" x="56" y="35" width="18" height="10" rx="2"/><rect class="acc" x="36" y="31" width="8" height="18"/></symbol>
+ <symbol id="sp-brg" viewBox="0 0 80 80"><circle class="pm" cx="40" cy="40" r="30"/><circle class="pc" cx="40" cy="40" r="22"/><g class="acc"><circle cx="40" cy="22" r="4"/><circle cx="58" cy="40" r="4"/><circle cx="40" cy="58" r="4"/><circle cx="22" cy="40" r="4"/><circle cx="53" cy="27" r="4"/><circle cx="53" cy="53" r="4"/><circle cx="27" cy="53" r="4"/><circle cx="27" cy="27" r="4"/></g><circle class="pm" cx="40" cy="40" r="13"/><circle class="pc" cx="40" cy="40" r="8"/></symbol>
+ <symbol id="sp-seal" viewBox="0 0 80 80"><circle class="p2" cx="40" cy="40" r="30"/><circle class="acc" cx="40" cy="40" r="20"/><circle class="pc" cx="40" cy="40" r="11"/><path class="ln" d="M40 10v6M40 64v6M10 40h6M64 40h6"/></symbol>
+ <symbol id="sp-mtr" viewBox="0 0 80 80"><rect class="pm" x="14" y="24" width="44" height="32" rx="5"/><path class="ln" d="M22 26v28M30 26v28M38 26v28M46 26v28"/><rect class="p2" x="56" y="28" width="10" height="24" rx="3"/><rect class="p2" x="26" y="16" width="16" height="9" rx="2"/><rect class="ink" x="6" y="37" width="9" height="6"/><rect class="ink" x="18" y="56" width="36" height="6" rx="1"/></symbol>
+ <symbol id="sp-cpl" viewBox="0 0 80 80"><rect class="ink" x="4" y="36" width="12" height="8"/><rect class="ink" x="64" y="36" width="12" height="8"/><rect class="pm" x="16" y="22" width="20" height="36" rx="4"/><rect class="pm" x="44" y="22" width="20" height="36" rx="4"/><rect class="acc" x="34" y="26" width="12" height="28" rx="2"/></symbol>
+ <symbol id="sp-bp" viewBox="0 0 80 80"><path class="pm" d="M6 46 L18 34 H74 L62 46 Z"/><path class="ink" d="M6 46 H62 V52 H6 Z M62 46 L74 34 V40 L62 52 Z"/><g class="acc"><circle cx="20" cy="40" r="2.5"/><circle cx="34" cy="40" r="2.5"/><circle cx="50" cy="40" r="2.5"/><circle cx="62" cy="40" r="2.5"/></g></symbol>
+
+ <!-- industry icons -->
+ <symbol id="i-water" viewBox="0 0 48 48"><path class="acc" d="M24 6 C30 16 36 22 36 30 a12 12 0 0 1 -24 0 C12 22 18 16 24 6Z"/><path class="ln" style="opacity:.9" d="M18 32 a6 6 0 0 0 6 6"/></symbol>
+ <symbol id="i-chem" viewBox="0 0 48 48"><path class="pm" d="M18 6 H30 V8 H28 V18 L38 38 a3 3 0 0 1 -3 4 H13 a3 3 0 0 1 -3 -4 L20 18 V8 H18Z"/><path class="acc" d="M15 30 H33 L37 38 a2 2 0 0 1 -2 3 H13 a2 2 0 0 1 -2 -3Z"/></symbol>
+ <symbol id="i-mine" viewBox="0 0 48 48"><path class="acc" d="M6 40 L18 18 L26 30 L32 22 L42 40Z"/><path class="lnw" d="M30 8 L16 22 M24 6 Q34 6 38 14"/></symbol>
+ <symbol id="i-food" viewBox="0 0 48 48"><rect class="pm" x="12" y="10" width="24" height="30" rx="4"/><rect class="acc" x="12" y="20" width="24" height="10"/><rect class="p2" x="18" y="4" width="12" height="7" rx="1"/></symbol>
+ <symbol id="i-oil" viewBox="0 0 48 48"><path class="pm" d="M14 42 L22 10 H26 L34 42Z"/><path class="ln" style="opacity:.9" d="M17 30 H31 M19 22 H29 M16 36 L30 18 M32 36 L18 18"/><rect class="acc" x="8" y="40" width="32" height="4"/><circle class="acc" cx="24" cy="8" r="3"/></symbol>
+ <symbol id="i-gen" viewBox="0 0 48 48"><circle class="pm" cx="24" cy="24" r="12"/><g class="acc"><rect x="21" y="4" width="6" height="8"/><rect x="21" y="36" width="6" height="8"/><rect x="4" y="21" width="8" height="6"/><rect x="36" y="21" width="8" height="6"/></g><circle class="pc" cx="24" cy="24" r="5"/></symbol>
+</defs>
+</svg>
+
+<a class="hp" href="#main">Skip to main content</a>
+<header class="hdr"><div class="wrap">
+ <a class="brand" href="#home" aria-label="VME Pumps Ltd, home"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>VME</b><small>PUMPS LTD</small></span></a>
+ <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+ <nav class="nav" id="nav" aria-label="Main">
+  <a href="#home">Home</a><a href="#products">Products</a><a href="#spares">Spares</a><a href="#industries">Industries</a><a href="#sites">Our sites</a><a href="#projects">Projects &amp; export</a><a href="#contact">Contact</a>
+  <a class="btn" href="#contact">Request a quote</a>
+ </nav>
+</div></header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="home"><div class="wrap">
+ <div>
+  <p class="eyebrow">Industrial pumps &amp; spare parts · UK</p>
+  <h1>Built in Manchester. Stocked in Birmingham. <span>Shipped worldwide.</span></h1>
+  <p class="lead">VME Pumps Ltd designs and builds industrial pumps for water, chemical, mining, food and energy applications, and keeps finished pumps and spare parts ready to ship.</p>
+  <div class="ctas"><a class="btn" href="#contact">Request a quote</a><a class="btn ghost" href="#products">See the range</a></div>
+  <div class="facts"><span><b>10</b> pump models</span><span><b>2</b> UK sites</span><span><b>3</b> routes to market</span><span><b>6</b> export markets</span></div>
+ </div>
+ <figure class="ga" style="margin:0">
+  <svg viewBox="0 0 600 400" role="img" aria-labelledby="ga-t">
+   <title id="ga-t">General arrangement drawing of the FG-C100-075 centrifugal pump, showing casing, impeller, seal, coupling, motor and baseplate</title>
+   <use href="#p-cent" x="60" y="60" width="480" height="300"/>
+   <g class="lead-ln"><path d="M120 46 L150 186"/><path d="M300 46 L314 214"/><path d="M470 46 L420 190"/><path d="M110 352 L188 220"/><path d="M290 352 L274 222"/><path d="M480 352 L470 306"/></g>
+   <g class="lead-dot"><circle cx="150" cy="186" r="4"/><circle cx="314" cy="214" r="4"/><circle cx="420" cy="190" r="4"/><circle cx="188" cy="220" r="4"/><circle cx="274" cy="222" r="4"/><circle cx="470" cy="306" r="4"/></g>
+   <text class="lbl" x="70" y="30">CAS-001</text><text class="lbl-s" x="70" y="44">Casing</text>
+   <text class="lbl" x="262" y="30">CPL-001</text><text class="lbl-s" x="262" y="44">Coupling</text>
+   <text class="lbl" x="430" y="30">MTR-0750</text><text class="lbl-s" x="430" y="44">Motor, 75 kW</text>
+   <text class="lbl" x="60" y="368">IMP-001</text><text class="lbl-s" x="60" y="382">Impeller</text>
+   <text class="lbl" x="250" y="368">MS-001</text><text class="lbl-s" x="250" y="382">Mechanical seal</text>
+   <text class="lbl" x="440" y="368">BP-001</text><text class="lbl-s" x="440" y="382">Baseplate</text>
+  </svg>
+  <figcaption class="code" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:.4rem;padding:.5rem .3rem 0;color:var(--muted)"><span>GA · FG-C100-075 Centrifugal pump, 75 kW</span><span>VME Pumps Ltd · Manchester</span></figcaption>
+ </figure>
+</div></section>
+
+<!-- PRODUCTS -->
+<section id="products"><div class="wrap">
+ <div class="sec-head"><p class="eyebrow">The range</p><h2>Ten pump models, one code system</h2>
+ <p class="lead">Every pump has a VME product code. Quote it on your enquiry, or give us your own part number and we will match it.</p></div>
+ <div class="filters" role="group" aria-label="Filter pumps by industry">
+  <button class="chip" type="button" data-f="all" aria-pressed="true">All pumps</button>
+  <button class="chip" type="button" data-f="water" aria-pressed="false">Water</button>
+  <button class="chip" type="button" data-f="chem" aria-pressed="false">Chemical</button>
+  <button class="chip" type="button" data-f="mine" aria-pressed="false">Mining &amp; quarrying</button>
+  <button class="chip" type="button" data-f="food" aria-pressed="false">Food processing</button>
+  <button class="chip" type="button" data-f="oil" aria-pressed="false">Oil, gas &amp; energy</button>
+  <button class="chip" type="button" data-f="gen" aria-pressed="false">General industry</button>
+ </div>
+ <div class="grid-p" id="grid"></div>
+</div></section>
+
+<!-- SPARES -->
+<section class="alt" id="spares"><div class="wrap">
+ <div class="two" style="align-items:start">
+  <div>
+   <p class="eyebrow">Spare parts</p><h2>Keep existing pumps running</h2>
+   <p class="lead">We hold spare parts at our Birmingham distribution centre, so replacements can go out on their own without waiting for a full pump build.</p>
+   <div class="note"><p><b>Order by code or by your own part number.</b> Each component has a VME code, such as BR-001 for a bearing. If your company uses its own part numbers, we keep a cross-reference so the right part ships every time.</p></div>
+   <p style="margin-top:1.2rem">We also supply the smaller items used in assembly and maintenance: O-rings (OR-001), gaskets (GAS-001), fasteners (FST-001), paint (PNT-001) and labels and packaging (LAB-001).</p>
+  </div>
+  <div class="spares">
+   <div class="part"><svg aria-hidden="true"><use href="#sp-imp"/></svg><b>Impeller</b><span class="code">IMP-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-cas"/></svg><b>Casing</b><span class="code">CAS-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-seal"/></svg><b>Mechanical seal</b><span class="code">MS-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-brg"/></svg><b>Bearing</b><span class="code">BR-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-sha"/></svg><b>Shaft</b><span class="code">SHA-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-cpl"/></svg><b>Coupling</b><span class="code">CPL-001</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-mtr"/></svg><b>Motors</b><span class="code">MTR-0022 to MTR-0750</span></div>
+   <div class="part"><svg aria-hidden="true"><use href="#sp-bp"/></svg><b>Baseplate</b><span class="code">BP-001</span></div>
+  </div>
+ </div>
+</div></section>
+
+<!-- INDUSTRIES -->
+<section id="industries"><div class="wrap">
+ <div class="sec-head"><p class="eyebrow">Industries</p><h2>Who our pumps are built for</h2></div>
+ <div class="inds">
+  <div class="ind"><svg aria-hidden="true"><use href="#i-water"/></svg><h3>Water &amp; wastewater</h3><p>Water supply, treatment and processing.</p><span class="code">FG-C100-075 · FG-C100-220 · FG-VTP400</span></div>
+  <div class="ind"><svg aria-hidden="true"><use href="#i-chem"/></svg><h3>Chemical processing</h3><p>Process chemicals, plus sealless pumps for hazardous and corrosive fluids.</p><span class="code">FG-CP1000 · FG-MDP075</span></div>
+  <div class="ind"><svg aria-hidden="true"><use href="#i-mine"/></svg><h3>Mining &amp; quarrying</h3><p>Dewatering and abrasive, high-solids slurries.</p><span class="code">FG-SUB500 · FG-SLP350</span></div>
+  <div class="ind"><svg aria-hidden="true"><use href="#i-food"/></svg><h3>Food processing</h3><p>General transfer duties on processing lines.</p><span class="code">FG-C100-075 · FG-SPR150</span></div>
+  <div class="ind"><svg aria-hidden="true"><use href="#i-oil"/></svg><h3>Oil, gas &amp; energy</h3><p>Heavy, high-viscosity duties and high-pressure service, often as engineered projects.</p><span class="code">FG-SCP800 · FG-MS200-100</span></div>
+  <div class="ind"><svg aria-hidden="true"><use href="#i-gen"/></svg><h3>General industry &amp; utilities</h3><p>Trade and utility work, including sites where re-priming is impractical.</p><span class="code">FG-SPR150 · FG-MS200-100</span></div>
+ </div>
+</div></section>
+
+<!-- SITES -->
+<section class="alt" id="sites"><div class="wrap">
+ <div class="sec-head"><p class="eyebrow">Our sites</p><h2>One company, two sites</h2>
+ <p class="lead">Manchester builds. Birmingham stocks and distributes. Finished pumps move from one to the other by internal transfer, so stock is close to where customers need it.</p></div>
+ <div class="two">
+  <article class="site">
+   <div class="art"><svg viewBox="0 0 520 260" role="img" aria-labelledby="m-t"><title id="m-t">Illustration of the VME Pumps manufacturing site in Manchester</title>
+    <rect class="gnd" x="0" y="228" width="520" height="32"/>
+    <rect class="pm" x="300" y="48" width="16" height="74"/><rect class="acc" x="300" y="60" width="16" height="8"/>
+    <path class="p2" d="M30 228 V120 L80 88 V120 L130 88 V120 L180 88 V120 L230 88 V120 L280 88 V120 L330 88 V228 Z"/>
+    <path class="ln" d="M80 92 V118 M130 92 V118 M180 92 V118 M230 92 V118 M280 92 V118 M330 92 V118"/>
+    <path class="ln" d="M40 140 H320"/>
+    <rect class="ink" x="80" y="128" width="210" height="26" rx="2"/><text class="svg-sign" x="185" y="146" text-anchor="middle">VME PUMPS · MANCHESTER</text>
+    <rect class="pm" x="50" y="170" width="54" height="58"/><path class="ln" d="M50 180h54M50 190h54M50 200h54M50 210h54M50 220h54"/>
+    <rect class="pm" x="122" y="170" width="54" height="58"/><path class="ln" d="M122 180h54M122 190h54M122 200h54M122 210h54M122 220h54"/>
+    <rect class="pc" x="200" y="178" width="100" height="22"/><path class="ln" d="M225 178v22M250 178v22M275 178v22"/>
+    <rect class="pm" x="330" y="138" width="150" height="90"/>
+    <g class="pc"><rect x="344" y="152" width="26" height="20"/><rect x="380" y="152" width="26" height="20"/><rect x="416" y="152" width="26" height="20"/><rect x="452" y="152" width="18" height="20"/><rect x="344" y="184" width="26" height="20"/><rect x="416" y="184" width="26" height="20"/><rect x="452" y="184" width="18" height="20"/></g>
+    <rect class="acc" x="380" y="184" width="26" height="44"/>
+    <use href="#logo" x="440" y="104" width="30" height="30"/>
+    <rect class="acc" x="196" y="208" width="24" height="20"/><rect class="p2" x="222" y="212" width="24" height="16"/><rect class="acc" x="248" y="208" width="24" height="20"/>
+   </svg></div>
+   <div class="body"><p class="eyebrow">Manchester</p><h3>Manufacturing</h3>
+    <p>Where VME pumps are designed and built.</p>
+    <ul><li>Raw materials store: castings, impellers, shafts, bearings, seals and motors</li><li>Assembly to a bill of materials for each model</li><li>Finished pumps for direct dispatch or transfer to Birmingham</li></ul></div>
+  </article>
+  <article class="site">
+   <div class="art"><svg viewBox="0 0 520 260" role="img" aria-labelledby="b-t"><title id="b-t">Illustration of the VME Pumps distribution centre in Birmingham with a lorry at the loading dock</title>
+    <rect class="gnd" x="0" y="228" width="520" height="32"/>
+    <rect class="ink" x="20" y="104" width="470" height="14"/>
+    <rect class="p2" x="26" y="118" width="458" height="110"/>
+    <path class="ln" d="M60 118v20M100 118v20M140 118v20M180 118v20M220 118v20M260 118v20M300 118v20M340 118v20"/>
+    <rect class="ink" x="44" y="126" width="240" height="24" rx="2"/><text class="svg-sign" x="164" y="143" text-anchor="middle">VME PUMPS · BIRMINGHAM</text>
+    <g><rect class="pm" x="44" y="166" width="52" height="62"/><rect class="pm" x="112" y="166" width="52" height="62"/><rect class="pm" x="180" y="166" width="52" height="62"/><rect class="pm" x="248" y="166" width="52" height="62"/></g>
+    <path class="ln" d="M44 178h52M44 190h52M44 202h52M44 214h52M112 178h52M112 190h52M112 202h52M112 214h52M248 178h52M248 190h52M248 202h52M248 214h52"/>
+    <rect class="pc" x="360" y="136" width="110" height="92"/><path class="ln" d="M382 136v92M404 136v92M426 136v92M448 136v92M360 168h110"/>
+    <rect class="pc" x="150" y="172" width="140" height="44" rx="2"/><rect class="acc" x="150" y="196" width="140" height="8"/>
+    <path class="acc" d="M290 182 H322 L338 198 V216 H290 Z"/><rect class="pc" x="300" y="186" width="18" height="12"/>
+    <g class="ink"><circle cx="176" cy="220" r="8"/><circle cx="198" cy="220" r="8"/><circle cx="312" cy="220" r="8"/></g>
+   </svg></div>
+   <div class="body"><p class="eyebrow">Birmingham</p><h3>Distribution centre</h3>
+    <p>No manufacturing happens here. Everything arrives from Manchester and goes out to customers.</p>
+    <ul><li>Finished pumps ready to ship</li><li>Spare parts store for replacement and maintenance orders</li><li>Dispatch to UK customers and export shipments</li></ul></div>
+  </article>
+ </div>
+ <div class="flow" aria-label="How a pump reaches you">
+  <ol>
+   <li><b>Build</b><span>Assembled in Manchester</span></li>
+   <li><b>Transfer</b><span>Moved to Birmingham stock</span></li>
+   <li><b>Pick &amp; pack</b><span>Picked and packed for your order</span></li>
+   <li><b>Deliver</b><span>To UK sites or export</span></li>
+  </ol>
+ </div>
+</div></section>
+
+<!-- PROJECTS & EXPORT -->
+<section class="dark" id="projects"><div class="wrap">
+ <div class="sec-head"><p class="eyebrow">Projects &amp; export</p><h2>Three ways we work with customers</h2></div>
+ <div class="two" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+  <div class="panel"><h3>UK Industrial Sales</h3><p>Repeat wholesale orders for pumps and spare parts to UK industrial customers, on agreed account terms.</p></div>
+  <div class="panel"><h3>European Export Sales</h3><p>Pumps and spares for customers outside the UK. Our freight forwarder handles international shipping, customs documentation and delivery.</p>
+   <div class="markets" aria-label="Export markets"><span>Germany</span><span>Netherlands</span><span>USA</span><span>UAE</span><span>Saudi Arabia</span><span>Singapore</span></div></div>
+  <div class="panel"><h3>Global Projects Sales</h3><p>Bespoke, engineer-to-order pump systems for major projects.</p>
+   <ul><li>Billing in stages, tied to project milestones</li><li>Orders placed centrally and delivered to several sites</li><li>One consolidated invoice to your head office</li></ul></div>
+ </div>
+</div></section>
+
+<!-- HOW TO ORDER -->
+<section id="order"><div class="wrap">
+ <div class="sec-head"><p class="eyebrow">How to order</p><h2>From enquiry to invoice</h2></div>
+ <ol class="steps">
+  <li><b>Enquiry</b><span>Tell us the duty, model code or part number.</span></li>
+  <li><b>Quotation</b><span>We price it on your account terms and confirm lead time.</span></li>
+  <li><b>Sales order</b><span>Accept the quote and we confirm your order.</span></li>
+  <li><b>Delivery</b><span>Shipped from Birmingham, or built to order in Manchester.</span></li>
+  <li><b>Invoice</b><span>Invoiced on delivery, or by milestone for projects.</span></li>
+ </ol>
+</div></section>
+
+<!-- CONTACT -->
+<section class="alt" id="contact"><div class="wrap contact">
+ <div>
+  <p class="eyebrow">Contact</p><h2>Request a quote</h2>
+  <p class="lead">Send us your requirement and we will come back with a quotation. Prefer to talk it through? Call us.</p>
+  <div class="cards">
+   <div class="ccard"><div class="k">Phone</div><div class="v"><a href="tel:+447877966243">07877 966243</a></div></div>
+   <div class="ccard"><div class="k">Email</div><div class="v"><a href="mailto:admin@vmecareer.co.uk">admin@vmecareer.co.uk</a></div></div>
+   <div class="ccard"><div class="k">Sites</div><div class="v" style="font-size:1.05rem">Manchester (manufacturing)<br>Birmingham (distribution)</div></div>
+  </div>
+ </div>
+ <div>
+  <form class="quote" id="quote" novalidate>
+   <div id="q-status" class="status" role="status" hidden></div>
+   <div class="row">
+    <div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="q-company">Company</label><input id="q-company" name="company" autocomplete="organization"></div>
+   </div>
+   <div class="row">
+    <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="q-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
+   </div>
+   <div class="field"><label for="q-type">What do you need?</label>
+    <select id="q-type" name="type"><option>A new pump</option><option>Spare parts</option><option>An engineered project</option><option>Export enquiry</option><option>Something else</option></select></div>
+   <div class="field"><label for="q-product">Pump model <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+    <select id="q-product" name="product"><option value="">Not sure yet</option></select></div>
+   <div class="field"><label for="q-msg">Your requirement</label><p class="hint" id="q-msg-h">Quantity, duty, part numbers, delivery location and when you need it.</p>
+    <textarea id="q-msg" name="message" aria-describedby="q-msg-h" maxlength="2000" required></textarea></div>
+   <div class="chk"><input type="checkbox" id="q-consent" required><label for="q-consent">I agree to VME Pumps Ltd using these details to reply to my enquiry.</label></div>
+   <div class="hp" aria-hidden="true"><label for="q-web">Leave empty</label><input id="q-web" tabindex="-1" autocomplete="off"></div>
+   <div><button class="btn" type="submit" id="q-send">Send enquiry</button></div>
+  </form>
+ </div>
+</div></section>
+</main>
+
+<footer class="ftr"><div class="wrap">
+ <div class="cols">
+  <div><a class="brand" href="#home" style="color:var(--on-navy)"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>VME</b><small style="color:#F59A62">PUMPS LTD</small></span></a>
+   <p style="margin-top:.8rem">Industrial pumps and spare parts, designed and built in Manchester and distributed from Birmingham.</p></div>
+  <div><h4>Products</h4><ul><li><a href="#products">Pump range</a></li><li><a href="#spares">Spare parts</a></li><li><a href="#industries">Industries</a></li></ul></div>
+  <div><h4>Company</h4><ul><li><a href="#sites">Our sites</a></li><li><a href="#projects">Projects &amp; export</a></li><li><a href="https://www.vmecareer.co.uk">Careers &amp; training</a></li></ul></div>
+  <div><h4>Contact</h4><ul><li><a href="tel:+447877966243">07877 966243</a></li><li><a href="mailto:admin@vmecareer.co.uk">admin@vmecareer.co.uk</a></li><li><a href="#contact">Request a quote</a></li></ul></div>
+ </div>
+ <div class="base">© <span id="yr">2026</span> VME Pumps Ltd · Registered in the United Kingdom · www.vmepumps.co.uk</div>
+</div></footer>
+
+<script>
+(function(){
+var P=[
+ {c:"FG-C100-075",n:"Centrifugal Pump",kw:"75 kW",d:"End-suction pump for general industrial and water-processing duties.",s:"p-cent",f:["water","food","gen"]},
+ {c:"FG-C100-220",n:"Centrifugal Pump",kw:"220 kW",d:"The larger-duty centrifugal model for high-flow industrial and water applications.",s:"p-cent",f:["water","gen"],v:"var(--steel-2)"},
+ {c:"FG-CP1000",n:"Chemical Process Pump",kw:"Process duty",d:"Built for handling process chemicals in manufacturing plants.",s:"p-cent",f:["chem"],v:"var(--orange)"},
+ {c:"FG-SCP800",n:"Twin Screw Pump",kw:"Project duty",d:"Heavy-duty, high-viscosity pumping, usually supplied as part of an engineered project.",s:"p-screw",f:["oil"]},
+ {c:"FG-MS200-100",n:"Multistage Pump",kw:"100 kW",d:"Several impeller stages in series for high-pressure applications.",s:"p-ms",f:["oil","gen"]},
+ {c:"FG-SUB500",n:"Submersible Pump",kw:"50 kW",d:"Runs fully submerged for mining and heavy-duty dewatering.",s:"p-sub",f:["mine"]},
+ {c:"FG-SLP350",n:"Slurry Pump",kw:"35 kW",d:"Lined, heavy casing for abrasive, high-solids fluids in mining and quarrying.",s:"p-slurry",f:["mine"]},
+ {c:"FG-SPR150",n:"Self-Priming Pump",kw:"15 kW",d:"Primes itself, for trade and utility sites where re-priming is impractical.",s:"p-spr",f:["gen","food"]},
+ {c:"FG-MDP075",n:"Magnetic Drive Pump",kw:"7.5 kW",d:"Sealless and leak-free, for hazardous or corrosive chemicals.",s:"p-mag",f:["chem"]},
+ {c:"FG-VTP400",n:"Vertical Turbine Pump",kw:"40 kW",d:"Vertical design for water supply and process duties where floor space is tight.",s:"p-vtp",f:["water"]}
+];
+var L={water:"Water",chem:"Chemical",mine:"Mining",food:"Food",oil:"Oil & gas",gen:"General"};
+var g=document.getElementById('grid'),sel=document.getElementById('q-product');
+function esc(t){return String(t).replace(/[&<>"]/g,function(ch){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];});}
+g.innerHTML=P.map(function(p){
+ return '<article class="sheet" data-f="'+p.f.join(' ')+'">'+
+  '<div class="art"><svg viewBox="0 0 240 150" role="img" aria-label="Drawing of the '+esc(p.n)+'"'+(p.v?' style="--vol:'+p.v+'"':'')+'><use href="#'+p.s+'"/></svg></div>'+
+  '<div class="tb"><div><span class="k">Code</span><span class="v">'+p.c+'</span></div><div><span class="k">Rating</span><span class="v">'+esc(p.kw)+'</span></div></div>'+
+  '<div class="body"><h3>'+esc(p.n)+'</h3><p>'+esc(p.d)+'</p>'+
+  '<div class="tags">'+p.f.map(function(x){return '<span class="tag">'+esc(L[x])+'</span>';}).join('')+'</div>'+
+  '<a class="q" href="#contact" data-code="'+p.c+'">Request a quote for '+p.c+' →</a></div></article>';
+}).join('');
+P.forEach(function(p){var o=document.createElement('option');o.value=p.c;o.textContent=p.c+' · '+p.n+' ('+p.kw+')';sel.appendChild(o);});
+
+var chips=[].slice.call(document.querySelectorAll('.chip'));
+chips.forEach(function(b){b.addEventListener('click',function(){
+ chips.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+ var f=b.getAttribute('data-f');
+ [].forEach.call(g.children,function(c){c.hidden=!(f==='all'||c.getAttribute('data-f').split(' ').indexOf(f)>-1);});
+});});
+
+g.addEventListener('click',function(e){var a=e.target.closest('a[data-code]');if(!a)return;sel.value=a.getAttribute('data-code');document.getElementById('q-type').value='A new pump';});
+
+var mb=document.getElementById('menu-btn'),nav=document.getElementById('nav');
+mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false');mb.textContent=o?'Close':'Menu';});
+nav.addEventListener('click',function(e){if(e.target.closest('a')&&nav.classList.contains('open')){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='Menu';}});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+var form=document.getElementById('quote'),st=document.getElementById('q-status'),btn=document.getElementById('q-send');
+function v(id){return document.getElementById(id).value.trim();}
+function clearErr(){[].forEach.call(form.querySelectorAll('.err'),function(n){n.remove();});[].forEach.call(form.querySelectorAll('.invalid'),function(n){n.classList.remove('invalid');n.removeAttribute('aria-invalid');});}
+function bad(id,msg){var el=document.getElementById(id),p=document.createElement('p');p.className='err';p.textContent=msg;
+ if(el.type==='checkbox'){el.parentNode.insertAdjacentElement('afterend',p);}else{el.classList.add('invalid');el.setAttribute('aria-invalid','true');el.insertAdjacentElement('afterend',p);}}
+function show(ok,html){st.className='status '+(ok?'ok':'bad');st.innerHTML=html;st.hidden=false;st.scrollIntoView({block:'center',behavior:'smooth'});}
+form.addEventListener('submit',function(e){
+ e.preventDefault();clearErr();st.hidden=true;var errs=[];
+ if(!v('q-name')){bad('q-name','Enter your name');errs.push('q-name');}
+ var em=v('q-email');if(!em){bad('q-email','Enter your email address');errs.push('q-email');}else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){bad('q-email','Enter an email address like name@company.com');errs.push('q-email');}
+ if(!v('q-msg')){bad('q-msg','Tell us what you need');errs.push('q-msg');}
+ if(!document.getElementById('q-consent').checked){bad('q-consent','Tick the box so we can reply to you');errs.push('q-consent');}
+ if(errs.length){document.getElementById(errs[0]).focus();return;}
+ if(v('q-web')){form.reset();show(true,'Thank you. Your enquiry has been sent and we will be in touch.');return;}
+ btn.disabled=true;btn.textContent='Sending…';
+ fetch('https://formsubmit.co/ajax/admin@vmecareer.co.uk',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({
+  _subject:'VME Pumps enquiry from '+v('q-name')+(v('q-company')?' ('+v('q-company')+')':''),_template:'table',_captcha:'false',_replyto:em,
+  'Name':v('q-name'),'Company':v('q-company')||'(not given)','Email':em,'Phone':v('q-phone')||'(not given)','Enquiry type':v('q-type'),'Pump model':v('q-product')||'Not sure yet','Requirement':v('q-msg'),'Consent':'Agreed to details being used to reply'})})
+ .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||'failed');});})
+ .then(function(){form.reset();show(true,'Thank you. Your enquiry has been sent and we will be in touch with a quotation.');})
+ .catch(function(){show(false,'Your enquiry was not sent. Please try again, or email <a href="mailto:admin@vmecareer.co.uk">admin@vmecareer.co.uk</a> or call <a href="tel:+447877966243">07877 966243</a>.');})
+ .finally(function(){btn.disabled=false;btn.textContent='Send enquiry';});
+});
+})();
+</script>
+</body>
+</html>
